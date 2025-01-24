@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="#F7F7F7">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+        <!-- Título principal -->
+        <TextView
+                android:id="@+id/appTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sistema de Seguridad IoT"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:textColor="#333333" />
+
+        <!-- Card: Botones de control -->
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/startSystemButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Sistema"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF"
+                            android:src="@android:drawable/ic_media_play"/>
+
+                    <Button
+                            android:id="@+id/stopSystemButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Sistema"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF"
+                            android:src="@android:drawable/ic_media_pause"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/activateAlarmButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Activar Alarmas"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#2196F3"
+                            android:textColor="#FFFFFF"
+                            android:src="@android:drawable/ic_lock_idle_alarm"/>
+
+                    <Button
+                            android:id="@+id/deactivateAlarmButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Desactivar Alarmas"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#FFC107"
+                            android:textColor="#000000"
+                            android:src="@android:drawable/ic_lock_idle_lock"/>
+                </LinearLayout>
+
+                <Button
+                        android:id="@+id/stopAlarmButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Detener Alarma"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#D32F2F"
+                        android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card: Estado del sistema -->
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                <TextView
+                        android:id="@+id/systemStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Estado del Sistema: ---"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#333333" />
+
+                <TextView
+                        android:id="@+id/sensorsStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sala de estar: Inactivo, Dormitorio 1: Inactivo, Dormitorio 2: Inactivo"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#666666" />
+
+                <TextView
+                        android:id="@+id/alarmStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alarma: ---"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#666666" />
+
+                <TextView
+                        android:id="@+id/temperatureText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Temperatura: -- °C"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#666666" />
+
+                <TextView
+                        android:id="@+id/humidityText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Humedad: -- %"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#666666" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Botón para el historial -->
+        <Button
+                android:id="@+id/disableBuzzer2Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Desactivar Alarma de Incendios"
+                android:layout_marginBottom="16dp"
+                android:background="#FF5722"
+                android:textColor="#000000"
+                android:padding="12dp" />
+
+        <Button
+                android:id="@+id/activityLogButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver Registro de Actividad"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF" />
+
+        <!-- Control de LEDs por habitación -->
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Control de LEDs por Habitación"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:paddingBottom="8dp"
+                        android:textColor="#333333" />
+
+                <!-- Control General de LEDs -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Control General"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:layout_marginBottom="1dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="16dp">
+
+                    <Button
+                            android:id="@+id/turnOnAllLEDsButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Todos"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/turnOffAllLEDsButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Todos"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Sala -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sala"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/ledsalaOnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Sala"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/ledsalaOffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Sala"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Dormitorio 1 -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dormitorio 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/ledDormitorio1OnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Dorm. 1"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/ledDormitorio1OffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Dorm. 1"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Dormitorio 2 -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dormitorio 2"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/ledDormitorio2OnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Dorm. 2"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/ledDormitorio2OffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Dorm. 2"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Dormitorio 3 -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dormitorio 3"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/ledDormitorio3OnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Dorm. 3"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/ledDormitorio3OffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Dorm. 3"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Cocina -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cocina"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/ledCocinaOnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Cocina"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/ledCocinaOffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Cocina"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Baño 1 -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Baño 1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/baño1OnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Baño 1"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/baño1OffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Baño 1"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <!-- Baño 2 -->
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Baño 2"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="start"
+                        android:paddingBottom="4dp"
+                        android:textColor="#555555" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                    <Button
+                            android:id="@+id/baño2OnButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Encender Baño 2"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#4CAF50"
+                            android:textColor="#FFFFFF" />
+
+                    <Button
+                            android:id="@+id/baño2OffButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apagar Baño 2"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="#F44336"
+                            android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>

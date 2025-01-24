@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418322184678",
+    "project_id": "iot-house-19b8c",
+    "storage_bucket": "iot-house-19b8c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418322184678:android:f993d3c695b002cb55be27",
+        "android_client_info": {
+          "package_name": "com.example.iot_house"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZI5y26gXlIg4v3XXJBMS978zbn2lO6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
